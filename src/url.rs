@@ -15,6 +15,10 @@ impl Url {
             domain: get_domain(url).unwrap_or_default(),
         }
     }
+
+    pub fn value(&self) -> &str {
+        &self.value
+    }
 }
 
 impl fmt::Display for Url {
