@@ -2,7 +2,9 @@ use crate::url::Url;
 use reqwest::blocking::get;
 use scraper::{Html, Selector};
 
-pub fn crawl(url: &Url) {
+pub fn crawl(url: &Url) -> Vec<Url> {
+    let mut links = Vec::new();
+
     match get(url.value()) {
         Ok(response) => {
             if response.status().is_success() {
@@ -12,7 +14,7 @@ pub fn crawl(url: &Url) {
 
                 for element in document.select(&selector) {
                     if let Some(a) = element.value().attr("href") {
-                        println!("Found link: {}", Url::new(a));
+                        links.push(Url::new(a));
                     }
                 }
             } else {
@@ -27,4 +29,6 @@ pub fn crawl(url: &Url) {
             eprintln!("Error fetching URL: {}. Error: {}", url, e);
         }
     }
+
+    links
 }

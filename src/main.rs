@@ -18,5 +18,7 @@ fn main() {
     let url_node = url::Url::new(&url);
     println!("Valid URL: {}", url_node);
 
-    crawler::crawl(&url_node);
+    let links = crawler::crawl(&url_node);
+    println!("Found {} links:", links.len());
+    println!("{:?}", links);
 }
