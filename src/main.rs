@@ -1,5 +1,5 @@
 use std::env;
-
+mod crawler;
 mod url;
 
 fn main() {
@@ -17,4 +17,6 @@ fn main() {
 
     let url_node = url::Url::new(&url);
     println!("Valid URL: {}", url_node);
+
+    crawler::crawl(&url_node);
 }
