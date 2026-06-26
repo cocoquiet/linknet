@@ -15,5 +15,6 @@ fn main() {
         std::process::exit(1);
     }
 
-    println!("Valid URL: {}", url);
+    let url_node = url::Url::new(&url);
+    println!("Valid URL: {}", url_node);
 }
