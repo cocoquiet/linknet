@@ -2,10 +2,10 @@ use std::fmt;
 
 use regex::Regex;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub struct Url {
     value: String,
-    domain: String,
+    pub domain: String,
 }
 
 impl Url {
@@ -30,6 +30,14 @@ impl fmt::Display for Url {
         )
     }
 }
+
+// impl PartialEq for Url {
+//     fn eq(&self, other: &Self) -> bool {
+//         self.value == other.value
+//     }
+// }
+
+// impl Eq for Url {}
 
 pub fn validate_url(url: &str) -> bool {
     let re =
