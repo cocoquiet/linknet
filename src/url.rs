@@ -27,14 +27,6 @@ impl fmt::Display for Url {
     }
 }
 
-// impl PartialEq for Url {
-//     fn eq(&self, other: &Self) -> bool {
-//         self.value == other.value
-//     }
-// }
-
-// impl Eq for Url {}
-
 pub fn validate_url(url: &str) -> bool {
     let re =
         Regex::new(r"^https?://(?:www\.)?[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+(?:/[^\s]*)?$").unwrap();
