@@ -5,7 +5,7 @@ use scraper::{Html, Selector};
 pub fn crawl(url: &Url) -> Vec<Url> {
     let mut links = Vec::new();
 
-    match get(url.value()) {
+    match get(&url.value) {
         Ok(response) => {
             if response.status().is_success() {
                 let body = response.text().unwrap();

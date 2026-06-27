@@ -4,7 +4,7 @@ use regex::Regex;
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub struct Url {
-    value: String,
+    pub value: String,
     pub domain: String,
 }
 
@@ -14,10 +14,6 @@ impl Url {
             value: url.to_string(),
             domain: get_domain(url).unwrap_or_default(),
         }
-    }
-
-    pub fn value(&self) -> &str {
-        &self.value
     }
 }
 
